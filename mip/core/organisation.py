@@ -10,7 +10,7 @@ def backup_existing_key_items(mc_folder: Path):
     """ Generates a backup of the key items that exist in the mc folder. """
     # First, create the path to the backups directory
     backup_dir_path = mc_folder / constants.REQUIRED_ITEMS_BACKUP_DIR_NAME
-    # Make the name of the backup, based on the current time TODO make it a version number or something
+    # Make the name of the backup, based on the current time
     specific_backup_dir_name = str(datetime.now()).replace('-', '_').replace(':', '_').replace('.', '_')
     # Create the path to the specific backup directory
     specific_backup_dir_path = backup_dir_path / specific_backup_dir_name

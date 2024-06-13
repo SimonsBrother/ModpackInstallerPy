@@ -7,6 +7,9 @@ REQUIRED_MODPACK_ITEMS = ["mods", "config", "shaderpacks", "scripts", "options.t
 REQUIRED_ITEMS_BACKUP_DIR_NAME = "mip_key_items_backup"
 
 
+UNSET = "UNSET"
+
+
 class OperatingSystem(Enum):
     MAC = "macOS"
     WINDOWS = "Windows"
