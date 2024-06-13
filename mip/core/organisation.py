@@ -1,10 +1,9 @@
 """ Everything to do with putting modpack resources in the right location. """
 import shutil
 from pathlib import Path
-import constants
 from datetime import datetime
 
-# TODO TEST EVERYTHING
+import mip.core.constants as constants
 
 
 def backup_existing_key_items(mc_folder: Path):
@@ -24,7 +23,14 @@ def backup_existing_key_items(mc_folder: Path):
         item_path = mc_folder / item
         # Check that the item exists before trying to back it up
         if item_path.exists():
-            shutil.copytree(item_path, specific_backup_dir_path)
+            if item_path.is_dir():
+                # Create directory for storing the contents of the key directory
+                item_backup_path = specific_backup_dir_path / item
+                item_backup_path.mkdir()
+                shutil.copytree(item_path, item_backup_path, dirs_exist_ok=True)
+            else:
+                # Copy the file
+                shutil.copy(item_path, specific_backup_dir_path)
 
 
 def delete_existing_key_folders(mc_folder: Path):
@@ -42,4 +48,4 @@ def delete_existing_key_folders(mc_folder: Path):
 
 
 def copy_key_folders(modpack_data_path: Path, mc_folder: Path):
-    shutil.copytree(modpack_data_path, mc_folder)
+    shutil.copytree(modpack_data_path, mc_folder, dirs_exist_ok=True)
