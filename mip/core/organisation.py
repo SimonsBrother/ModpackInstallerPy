@@ -3,7 +3,7 @@ import shutil
 from pathlib import Path
 from datetime import datetime
 
-import mip.core.constants as constants
+from . import constants
 
 
 def backup_existing_key_items(mc_folder: Path):

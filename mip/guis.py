@@ -4,8 +4,8 @@ from pathlib import Path
 from tkinter import ttk
 from tkinter import messagebox, filedialog
 
-import mip.core.preparation as prep
-import mip.core.constants as constants
+from core import preparation as prep
+from core import constants
 
 
 modpack_url = "csladsmodpack.ddns.net"
@@ -86,7 +86,8 @@ def make_modpack_data_path_gui() -> tuple[tk.Tk, tk.StringVar]:
 
     tk.Label(frm, justify=tk.CENTER,
              text="In the unzipped csladsmodpack folder, there should be a folder called 'modpack_data'.\n"
-                  "Press the button below and select the folder.").grid(column=0, row=0)
+                  "Press the button below and select the folder. Once you select it, if it's the right folder,\n"
+                  "the modpack will be installed - this may take a few seconds. You'll get an alert once it's finished.").grid(column=0, row=0)
 
     modpack_data_path = tk.StringVar()
     modpack_data_path.set(constants.UNSET)
