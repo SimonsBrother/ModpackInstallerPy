@@ -3,10 +3,10 @@ from pathlib import Path
 from core import preparation as prep
 from core import organisation as org
 from core import constants
-from guis import make_prepare_gui, make_modpack_data_path_gui, show_error, show_conclusion
+from guis import make_preparation_gui, make_modpack_data_path_gui, show_error, show_conclusion
 
 # Manual prep
-make_prepare_gui().mainloop()
+make_preparation_gui().mainloop()
 
 # Get modpack data path
 mp_data_path_gui, mp_data_path = make_modpack_data_path_gui()

@@ -28,7 +28,7 @@ def centre_root(root: tk.Tk):
     root.geometry(f"+{x}+{y}")
 
 
-def make_prepare_gui() -> tk.Tk:
+def make_preparation_gui() -> tk.Tk:
     """ Creates the GUI for guiding the user to preparing the modpack, and returns the root. """
     root = tk.Tk()
     root.wm_title("ModpackInstaller(Py) - preparation")
@@ -42,17 +42,18 @@ def make_prepare_gui() -> tk.Tk:
                                                                                                           row=0)
 
     # Download link
-    mp_link = tk.Label(frm, text=modpack_url, fg="lightblue", cursor="hand")
+    mp_link = tk.Label(frm, text=modpack_url, fg="blue")
     mp_link.grid(column=0, row=1)
     mp_link.bind("<Button-1>", lambda e: webbrowser.open_new("http://" + modpack_url))
 
     # Step 2
     ttk.Label(frm, justify=tk.CENTER,
-              text="2. Find where you downloaded the file, and unzip it. If you don't know, read the article below.").grid(
+              text="2. Find where you downloaded the file, and unzip it. If you don't know, read the article below.\n"
+                   "(Try right clicking the file and click 'Extract All...', then click 'Extract')").grid(
         column=0, row=3)
 
     # Unzip link
-    unzip_link = tk.Label(frm, text="How to unzip files", fg="lightblue", cursor="hand")
+    unzip_link = tk.Label(frm, text="How to unzip files", fg="blue")
     unzip_link.grid(column=0, row=4)
     unzip_link.bind("<Button-1>", lambda e: webbrowser.open_new("https://www.wikihow.com/Unzip-a-File"))
 
