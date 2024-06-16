@@ -110,6 +110,21 @@ def make_modpack_data_path_gui() -> tuple[tk.Tk, tk.StringVar]:
     return root, modpack_data_path
 
 
+def get_custom_mc_folder() -> tuple[bool, Path]:
+    custom_mc_folder = messagebox.askyesno("Custom MC folder", "Do you have a custom Minecraft installation?\n"
+                                                               "(for instance, if you have Minecraft installed on a different drive)")
+
+    mc_folder = None
+    if custom_mc_folder:
+        mc_folder = Path(filedialog.askdirectory())
+        if "minecraft" not in mc_folder.name:
+            messagebox.showwarning("Wrong folder?", "The selected folder doesn't seem like the expected folder\n"
+                                                    f"Got '{mc_folder}' (should end with 'minecraft' or '.minecraft')\n"
+                                                    f"Restart installer to pick a different folder.")
+
+    return custom_mc_folder, mc_folder
+
+
 def show_error(error: Exception):
     messagebox.showerror("Error occurred.", f"An error occurred. Details: \n\n\n {error}")
     exit(1)
